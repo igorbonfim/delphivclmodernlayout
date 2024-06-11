@@ -13,4 +13,13 @@ object FrmPrincipal: TFrmPrincipal
   WindowState = wsMaximized
   OnShow = FormShow
   TextHeight = 15
+  object BitBtn1: TBitBtn
+    Left = 56
+    Top = 40
+    Width = 75
+    Height = 25
+    Caption = 'BitBtn1'
+    TabOrder = 0
+    OnClick = BitBtn1Click
+  end
 end

@@ -4,12 +4,15 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uSplash, Vcl.StdCtrls, uHerancaBase;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uSplash, Vcl.StdCtrls, uHerancaBase,
+  Vcl.Buttons, uHerancaListagem;
 
 type
   TFrmPrincipal = class(TForm)
+    BitBtn1: TBitBtn;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -22,6 +25,13 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFrmPrincipal.BitBtn1Click(Sender: TObject);
+begin
+  frmHerancaListagem := TfrmHerancaListagem.Create(Self);
+  frmHerancaListagem.ShowModal;
+  frmHerancaListagem.Release;
+end;
 
 procedure TFrmPrincipal.Button1Click(Sender: TObject);
 begin
