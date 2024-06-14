@@ -7,29 +7,39 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
   TextHeight = 15
   inherited pnlHeader: TPanel
     Width = 1159
+    ExplicitWidth = 1159
     inherited imgBtnClose: TImage
       Left = 1136
+      ExplicitLeft = 1136
     end
     inherited pnlHeaderLineTop: TPanel
       Width = 1159
+      ExplicitWidth = 1159
     end
     inherited pnlHeaderLineRight: TPanel
       Left = 1158
+      ExplicitLeft = 1158
     end
     inherited pnlHeaderLineGray: TPanel
       Width = 1140
+      ExplicitWidth = 1140
     end
   end
   inherited pnlFormLineLeft: TPanel
     Height = 657
+    ExplicitHeight = 657
   end
   inherited pnlFormLineRight: TPanel
     Left = 1158
     Height = 657
+    ExplicitLeft = 1158
+    ExplicitHeight = 657
   end
   inherited pnlFormLineBottom: TPanel
     Top = 687
     Width = 1159
+    ExplicitTop = 687
+    ExplicitWidth = 1159
   end
   object pnlFormPrincipal: TPanel [4]
     Left = 1
@@ -39,10 +49,6 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 4
-    ExplicitLeft = 496
-    ExplicitTop = 208
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object pnlFormPrincipalTop: TPanel
       Left = 0
       Top = 0
@@ -51,8 +57,6 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitLeft = -6
-      ExplicitTop = -1
       object lblPesquisarPor: TLabel
         Left = 9
         Top = 19
@@ -74,7 +78,6 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitTop = 0
       end
       object mskPesquisar: TMaskEdit
         Left = 6
@@ -93,6 +96,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         ImageIndex = 1
         Images = imgButtons
         TabOrder = 2
+        OnClick = btnNovoClick
         OnMouseEnter = btnNovoMouseEnter
         OnMouseLeave = btnNovoMouseLeave
       end

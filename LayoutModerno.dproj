@@ -116,6 +116,10 @@
             <Form>FrmHerancaListagem</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uHerancaCadastro.pas">
+            <Form>FrmHerancaCadastro</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

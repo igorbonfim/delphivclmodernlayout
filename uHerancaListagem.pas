@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uHerancaBase, Vcl.StdCtrls,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Mask,
-  JvExStdCtrls, JvButton, JvCtrls, System.ImageList, Vcl.ImgList, Vcl.DBCtrls;
+  JvExStdCtrls, JvButton, JvCtrls, System.ImageList, Vcl.ImgList, Vcl.DBCtrls,
+  uHerancaCadastro;
 
 type
   TFrmHerancaListagem = class(TFrmHerancaBase)
@@ -31,6 +32,7 @@ type
     procedure btmApagarMouseLeave(Sender: TObject);
     procedure btnFecharMouseEnter(Sender: TObject);
     procedure btnFecharMouseLeave(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,6 +80,14 @@ procedure TFrmHerancaListagem.btnModificarMouseLeave(Sender: TObject);
 begin
   inherited;
   ButtonMouseEnter(Sender, 3);
+end;
+
+procedure TFrmHerancaListagem.btnNovoClick(Sender: TObject);
+begin
+  inherited;
+  FrmHerancaCadastro := TfrmHerancaCadastro.Create(Self);
+  FrmHerancaCadastro.ShowModal;
+  FrmHerancaCadastro.Release;
 end;
 
 procedure TFrmHerancaListagem.btnNovoMouseEnter(Sender: TObject);
