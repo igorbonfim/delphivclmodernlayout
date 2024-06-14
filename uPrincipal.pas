@@ -5,11 +5,18 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uSplash, Vcl.StdCtrls, uHerancaBase,
-  Vcl.Buttons, uHerancaListagem;
+  Vcl.Buttons, uHerancaListagem, Vcl.ExtCtrls, Vcl.ComCtrls;
 
 type
   TFrmPrincipal = class(TForm)
-    BitBtn1: TBitBtn;
+    pnlPrincipalLeft: TPanel;
+    pnlPrincipalCenter: TPanel;
+    pnlPrincipalCenterLeft: TPanel;
+    pnlPrincipalCenterRight: TPanel;
+    pnlPrincipalCenterTop: TPanel;
+    pnlPrincipalCenterBottom: TPanel;
+    pgcPrincipal: TPageControl;
+    tbsMenu: TTabSheet;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -45,7 +52,7 @@ begin
   frmSplash := TfrmSplash.Create(Self);
   frmSplash.Show;
   frmSplash.Refresh;
-  Sleep(3000);
+  Sleep(2000);
 
   if Assigned(frmSplash) then
     frmSplash.Free;

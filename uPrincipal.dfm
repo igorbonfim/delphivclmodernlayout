@@ -2,8 +2,8 @@ object FrmPrincipal: TFrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Menu Principal'
-  ClientHeight = 441
-  ClientWidth = 624
+  ClientHeight = 632
+  ClientWidth = 935
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,13 +13,86 @@ object FrmPrincipal: TFrmPrincipal
   WindowState = wsMaximized
   OnShow = FormShow
   TextHeight = 15
-  object BitBtn1: TBitBtn
-    Left = 56
-    Top = 40
-    Width = 75
-    Height = 25
-    Caption = 'BitBtn1'
+  object pnlPrincipalLeft: TPanel
+    Left = 0
+    Top = 0
+    Width = 185
+    Height = 632
+    Align = alLeft
+    BevelOuter = bvNone
     TabOrder = 0
-    OnClick = BitBtn1Click
+    ExplicitLeft = 232
+    ExplicitTop = 152
+    ExplicitHeight = 41
+  end
+  object pnlPrincipalCenter: TPanel
+    Left = 185
+    Top = 0
+    Width = 750
+    Height = 632
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 1
+    ExplicitLeft = 312
+    ExplicitTop = 144
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object pnlPrincipalCenterLeft: TPanel
+      Left = 0
+      Top = 10
+      Width = 10
+      Height = 612
+      Align = alLeft
+      BevelOuter = bvNone
+      TabOrder = 0
+      ExplicitLeft = 208
+      ExplicitTop = 152
+      ExplicitHeight = 41
+    end
+    object pnlPrincipalCenterRight: TPanel
+      Left = 740
+      Top = 10
+      Width = 10
+      Height = 612
+      Align = alRight
+      BevelOuter = bvNone
+      TabOrder = 1
+      ExplicitLeft = 1
+      ExplicitTop = 1
+      ExplicitHeight = 439
+    end
+    object pnlPrincipalCenterTop: TPanel
+      Left = 0
+      Top = 0
+      Width = 750
+      Height = 10
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 2
+      ExplicitLeft = 730
+      ExplicitWidth = 632
+    end
+    object pnlPrincipalCenterBottom: TPanel
+      Left = 0
+      Top = 622
+      Width = 750
+      Height = 10
+      Align = alBottom
+      BevelOuter = bvNone
+      TabOrder = 3
+      ExplicitTop = 8
+    end
+    object pgcPrincipal: TPageControl
+      Left = 10
+      Top = 10
+      Width = 730
+      Height = 612
+      ActivePage = tbsMenu
+      Align = alClient
+      TabOrder = 4
+      object tbsMenu: TTabSheet
+        Caption = 'Menu'
+      end
+    end
   end
 end
