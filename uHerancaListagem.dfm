@@ -2,6 +2,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
   Caption = 'Digite o titulo da tela aqui'
   ClientHeight = 688
   ClientWidth = 1151
+  OnClose = FormClose
   ExplicitWidth = 1151
   ExplicitHeight = 688
   TextHeight = 15
@@ -166,6 +167,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         ImageIndex = 11
         Images = imgButtons
         TabOrder = 2
+        OnClick = btnFecharClick
         OnMouseEnter = btnFecharMouseEnter
         OnMouseLeave = btnFecharMouseLeave
       end

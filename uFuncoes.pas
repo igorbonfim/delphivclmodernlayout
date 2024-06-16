@@ -11,6 +11,7 @@ uses
 
 procedure CriarAba(aForm: TFormClass; aPageControl: TPageControl; aIndexImage: Integer);
 function AbaExiste(aNomeAba: string; aPageControl: TPageControl): Boolean;
+procedure FecharAba(aNomeAba: string; aPageControl: TPageControl);
 
 implementation
 
@@ -49,7 +50,7 @@ begin
 
   for i := 0 to aPageControl.PageCount - 1 do
   begin
-    if aPageControl.Pages[i].Caption = LowerCase(aNomeAba) then
+    if LowerCase(aPageControl.Pages[i].Caption) = LowerCase(aNomeAba) then
     begin
       aPageControl.ActivePage := aPageControl.Pages[i];
       aPageControl.TabIndex := i;
@@ -57,7 +58,21 @@ begin
       break;
     end;
   end;
+end;
 
+procedure FecharAba(aNomeAba: string; aPageControl: TPageControl);
+var
+  i: Integer;
+begin
+  for i := 0 to aPageControl.PageCount - 1 do
+  begin
+    if LowerCase(aPageControl.Pages[i].Caption) = LowerCase(aNomeAba) then
+    begin
+      aPageControl.Pages[i].Destroy;
+      aPageControl.ActivePageIndex := 0;
+      break;
+    end;
+  end;
 end;
 
 end.

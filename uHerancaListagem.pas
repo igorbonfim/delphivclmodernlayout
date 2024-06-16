@@ -6,8 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uHerancaBase, Vcl.StdCtrls,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Mask,
-  JvExStdCtrls, JvButton, JvCtrls, System.ImageList, Vcl.ImgList, Vcl.DBCtrls,
-  uHerancaCadastro;
+  JvExStdCtrls, JvButton, JvCtrls, System.ImageList, Vcl.ImgList, Vcl.DBCtrls;
 
 type
   TFrmHerancaListagem = class(TFrmHerancaBase)
@@ -33,6 +32,8 @@ type
     procedure btnFecharMouseEnter(Sender: TObject);
     procedure btnFecharMouseLeave(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnFecharClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,6 +47,8 @@ implementation
 
 {$R *.dfm}
 
+uses uPrincipal, uHerancaCadastro, uFuncoes;
+
 procedure TFrmHerancaListagem.btmApagarMouseEnter(Sender: TObject);
 begin
   inherited;
@@ -56,6 +59,12 @@ procedure TFrmHerancaListagem.btmApagarMouseLeave(Sender: TObject);
 begin
   inherited;
   ButtonMouseEnter(Sender, 9);
+end;
+
+procedure TFrmHerancaListagem.btnFecharClick(Sender: TObject);
+begin
+  inherited;
+  Close;
 end;
 
 procedure TFrmHerancaListagem.btnFecharMouseEnter(Sender: TObject);
@@ -100,6 +109,13 @@ procedure TFrmHerancaListagem.btnNovoMouseLeave(Sender: TObject);
 begin
   inherited;
   ButtonMouseLeave(Sender, 1);
+end;
+
+procedure TFrmHerancaListagem.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  inherited;
+  FecharAba(Self.Caption, frmPrincipal.pgcPrincipal);
 end;
 
 end.
