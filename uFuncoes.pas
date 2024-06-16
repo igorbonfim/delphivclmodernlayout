@@ -10,6 +10,7 @@ uses
   uHerancaCadastro, Vcl.ComCtrls;
 
 procedure CriarAba(aForm: TFormClass; aPageControl: TPageControl; aIndexImage: Integer);
+function AbaExiste(aNomeAba: string; aPageControl: TPageControl): Boolean;
 
 implementation
 
@@ -19,6 +20,13 @@ var
   Form: TForm;
 begin
   Form := aForm.Create(nil);
+
+  if AbaExiste(Form.Caption, aPageControl) then
+  begin
+    if Assigned(Form) then
+      FreeAndNil(Form);
+    exit;
+  end;
 
   TabSheet := TTabSheet.Create(nil);
   TabSheet.PageControl := aPageControl;
@@ -31,6 +39,25 @@ begin
   Form.Show;
 
   aPageControl.ActivePage := TabSheet;
+end;
+
+function AbaExiste(aNomeAba: string; aPageControl: TPageControl): Boolean;
+var
+  i: Integer;
+begin
+  Result := false;
+
+  for i := 0 to aPageControl.PageCount - 1 do
+  begin
+    if aPageControl.Pages[i].Caption = LowerCase(aNomeAba) then
+    begin
+      aPageControl.ActivePage := aPageControl.Pages[i];
+      aPageControl.TabIndex := i;
+      Result := true;
+      break;
+    end;
+  end;
+
 end;
 
 end.
