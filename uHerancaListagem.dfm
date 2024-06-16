@@ -1,5 +1,5 @@
 inherited FrmHerancaListagem: TFrmHerancaListagem
-  Caption = ''
+  Caption = 'Digite o titulo da tela aqui'
   ClientHeight = 688
   ClientWidth = 1151
   ExplicitWidth = 1151
@@ -7,22 +7,22 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
   TextHeight = 15
   inherited pnlHeader: TPanel
     Width = 1151
-    ExplicitWidth = 1159
+    ExplicitWidth = 1151
     inherited imgBtnClose: TImage
       Left = 1128
       ExplicitLeft = 1136
     end
     inherited pnlHeaderLineTop: TPanel
       Width = 1151
-      ExplicitWidth = 1159
+      ExplicitWidth = 1151
     end
     inherited pnlHeaderLineRight: TPanel
       Left = 1150
-      ExplicitLeft = 1158
+      ExplicitLeft = 1150
     end
     inherited pnlHeaderLineGray: TPanel
       Width = 1132
-      ExplicitWidth = 1140
+      ExplicitWidth = 1132
     end
   end
   inherited pnlFormLineLeft: TPanel
@@ -32,14 +32,14 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
   inherited pnlFormLineRight: TPanel
     Left = 1150
     Height = 657
-    ExplicitLeft = 1158
+    ExplicitLeft = 1150
     ExplicitHeight = 657
   end
   inherited pnlFormLineBottom: TPanel
     Top = 687
     Width = 1151
     ExplicitTop = 687
-    ExplicitWidth = 1159
+    ExplicitWidth = 1151
   end
   object pnlFormPrincipal: TPanel [4]
     Left = 1
@@ -49,7 +49,6 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 4
-    ExplicitWidth = 1157
     object pnlFormPrincipalTop: TPanel
       Left = 0
       Top = 0
@@ -58,7 +57,6 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitWidth = 1157
       DesignSize = (
         1149
         70)
@@ -83,7 +81,6 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1157
       end
       object mskPesquisar: TMaskEdit
         Left = 6
@@ -106,7 +103,6 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         OnClick = btnNovoClick
         OnMouseEnter = btnNovoMouseEnter
         OnMouseLeave = btnNovoMouseLeave
-        ExplicitLeft = 843
       end
       object btnModificar: TJvImgBtn
         Left = 941
@@ -119,7 +115,6 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         TabOrder = 3
         OnMouseEnter = btnModificarMouseEnter
         OnMouseLeave = btnModificarMouseLeave
-        ExplicitLeft = 949
       end
       object btmApagar: TJvImgBtn
         Left = 1043
@@ -132,7 +127,6 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         TabOrder = 4
         OnMouseEnter = btmApagarMouseEnter
         OnMouseLeave = btmApagarMouseLeave
-        ExplicitLeft = 1051
       end
     end
     object pnlFormPrincipalBottom: TPanel
@@ -143,7 +137,6 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 1157
       DesignSize = (
         1149
         49)
@@ -155,7 +148,6 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1157
       end
       object DBNavigator1: TDBNavigator
         Left = 9
@@ -176,7 +168,6 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         TabOrder = 2
         OnMouseEnter = btnFecharMouseEnter
         OnMouseLeave = btnFecharMouseLeave
-        ExplicitLeft = 1051
       end
     end
     object grdListagem: TDBGrid

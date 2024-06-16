@@ -6,7 +6,8 @@ uses
   uSplash in 'uSplash.pas' {FrmSplash},
   uHerancaBase in 'uHerancaBase.pas' {FrmHerancaBase},
   uHerancaListagem in 'uHerancaListagem.pas' {FrmHerancaListagem},
-  uHerancaCadastro in 'uHerancaCadastro.pas' {FrmHerancaCadastro};
+  uHerancaCadastro in 'uHerancaCadastro.pas' {FrmHerancaCadastro},
+  uFuncoes in 'uFuncoes.pas';
 
 {$R *.res}
 

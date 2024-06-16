@@ -120,6 +120,7 @@
             <Form>FrmHerancaCadastro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uFuncoes.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

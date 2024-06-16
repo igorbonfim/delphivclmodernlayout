@@ -21,9 +21,15 @@ object FrmPrincipal: TFrmPrincipal
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 232
-    ExplicitTop = 152
-    ExplicitHeight = 41
+    object BitBtn1: TBitBtn
+      Left = 64
+      Top = 80
+      Width = 75
+      Height = 25
+      Caption = 'BitBtn1'
+      TabOrder = 0
+      OnClick = BitBtn1Click
+    end
   end
   object pnlPrincipalCenter: TPanel
     Left = 185
@@ -33,10 +39,6 @@ object FrmPrincipal: TFrmPrincipal
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = 312
-    ExplicitTop = 144
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object pnlPrincipalCenterLeft: TPanel
       Left = 0
       Top = 10
@@ -45,9 +47,6 @@ object FrmPrincipal: TFrmPrincipal
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitLeft = 208
-      ExplicitTop = 152
-      ExplicitHeight = 41
     end
     object pnlPrincipalCenterRight: TPanel
       Left = 740
@@ -57,9 +56,6 @@ object FrmPrincipal: TFrmPrincipal
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitHeight = 439
     end
     object pnlPrincipalCenterTop: TPanel
       Left = 0
@@ -69,8 +65,6 @@ object FrmPrincipal: TFrmPrincipal
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitLeft = 730
-      ExplicitWidth = 632
     end
     object pnlPrincipalCenterBottom: TPanel
       Left = 0
@@ -80,7 +74,6 @@ object FrmPrincipal: TFrmPrincipal
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 3
-      ExplicitTop = 8
     end
     object pgcPrincipal: TPageControl
       Left = 10

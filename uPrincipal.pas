@@ -17,6 +17,7 @@ type
     pnlPrincipalCenterBottom: TPanel;
     pgcPrincipal: TPageControl;
     tbsMenu: TTabSheet;
+    BitBtn1: TBitBtn;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -33,11 +34,14 @@ implementation
 
 {$R *.dfm}
 
+uses uFuncoes;
+
 procedure TFrmPrincipal.BitBtn1Click(Sender: TObject);
 begin
-  frmHerancaListagem := TfrmHerancaListagem.Create(Self);
+  {frmHerancaListagem := TfrmHerancaListagem.Create(Self);
   frmHerancaListagem.ShowModal;
-  frmHerancaListagem.Release;
+  frmHerancaListagem.Release;}
+  CriarAba(TfrmHerancaListagem, pgcPrincipal, -1);
 end;
 
 procedure TFrmPrincipal.Button1Click(Sender: TObject);
