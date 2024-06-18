@@ -11,6 +11,8 @@ object FrmPrincipal: TFrmPrincipal
   Font.Name = 'Segoe UI'
   Font.Style = []
   WindowState = wsMaximized
+  OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
   object pnlPrincipalLeft: TPanel

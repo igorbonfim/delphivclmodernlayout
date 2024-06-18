@@ -121,6 +121,11 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uFuncoes.pas"/>
+        <DCCReference Include="uDtmConexao.pas">
+            <Form>dtmConexao</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

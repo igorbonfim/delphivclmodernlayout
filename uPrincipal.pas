@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uSplash, Vcl.StdCtrls, uHerancaBase,
-  Vcl.Buttons, uHerancaListagem, Vcl.ExtCtrls, Vcl.ComCtrls;
+  Vcl.Buttons, uHerancaListagem, Vcl.ExtCtrls, Vcl.ComCtrls, uDtmConexao;
 
 type
   TFrmPrincipal = class(TForm)
@@ -21,6 +21,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -29,6 +31,7 @@ type
 
 var
   FrmPrincipal: TFrmPrincipal;
+  Conexao: TDtmConexao;
 
 implementation
 
@@ -49,6 +52,22 @@ begin
   frmHerancaBase := TfrmHerancaBase.Create(Self);
   frmHerancaBase.ShowModal;
   frmHerancaBase.Free;
+end;
+
+procedure TFrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if Assigned(dtmConexao) then
+    FreeAndNil(dtmConexao);
+end;
+
+procedure TFrmPrincipal.FormCreate(Sender: TObject);
+begin
+  try
+    dtmConexao := TDtmConexao.Create(Self);
+    dtmConexao.SQLConnection.Connected := true;
+  except
+    ShowMessage('Erro ao se conectar com o banco de dados');
+  end;
 end;
 
 procedure TFrmPrincipal.FormShow(Sender: TObject);
