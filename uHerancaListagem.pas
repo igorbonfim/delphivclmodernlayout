@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uHerancaBase, Vcl.StdCtrls,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Mask,
-  JvExStdCtrls, JvButton, JvCtrls, System.ImageList, Vcl.ImgList, Vcl.DBCtrls;
+  JvExStdCtrls, JvButton, JvCtrls, System.ImageList, Vcl.ImgList, Vcl.DBCtrls,
+  ZAbstractRODataset, ZAbstractDataset, ZDataset, uDtmConexao;
 
 type
   TFrmHerancaListagem = class(TFrmHerancaBase)
@@ -23,6 +24,8 @@ type
     btmApagar: TJvImgBtn;
     DBNavigator1: TDBNavigator;
     btnFechar: TJvImgBtn;
+    QryListagem: TZQuery;
+    dtsListagem: TDataSource;
     procedure btnNovoMouseEnter(Sender: TObject);
     procedure btnNovoMouseLeave(Sender: TObject);
     procedure btnModificarMouseLeave(Sender: TObject);
@@ -31,7 +34,6 @@ type
     procedure btmApagarMouseLeave(Sender: TObject);
     procedure btnFecharMouseEnter(Sender: TObject);
     procedure btnFecharMouseLeave(Sender: TObject);
-    procedure btnNovoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnFecharClick(Sender: TObject);
   private
@@ -47,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses uPrincipal, uHerancaCadastro, uFuncoes;
+uses uPrincipal, uFuncoes;
 
 procedure TFrmHerancaListagem.btmApagarMouseEnter(Sender: TObject);
 begin
@@ -89,14 +91,6 @@ procedure TFrmHerancaListagem.btnModificarMouseLeave(Sender: TObject);
 begin
   inherited;
   ButtonMouseEnter(Sender, 3);
-end;
-
-procedure TFrmHerancaListagem.btnNovoClick(Sender: TObject);
-begin
-  inherited;
-  FrmHerancaCadastro := TfrmHerancaCadastro.Create(Self);
-  FrmHerancaCadastro.ShowModal;
-  FrmHerancaCadastro.Release;
 end;
 
 procedure TFrmHerancaListagem.btnNovoMouseEnter(Sender: TObject);

@@ -101,7 +101,6 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         ImageIndex = 1
         Images = imgButtons
         TabOrder = 2
-        OnClick = btnNovoClick
         OnMouseEnter = btnNovoMouseEnter
         OnMouseLeave = btnNovoMouseLeave
       end
@@ -155,6 +154,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         Top = 6
         Width = 224
         Height = 36
+        DataSource = dtsListagem
         VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
         TabOrder = 1
       end
@@ -180,6 +180,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
       Align = alClient
       BorderStyle = bsNone
       Ctl3D = True
+      DataSource = dtsListagem
       ParentCtl3D = False
       TabOrder = 2
       TitleFont.Charset = DEFAULT_CHARSET
@@ -192,5 +193,16 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
   inherited imgButtons: TImageList
     Left = 560
     Top = 120
+  end
+  object QryListagem: TZQuery
+    Connection = dtmConexao.SQLConnection
+    Params = <>
+    Left = 569
+    Top = 46
+  end
+  object dtsListagem: TDataSource
+    DataSet = QryListagem
+    Left = 657
+    Top = 46
   end
 end
