@@ -8,7 +8,8 @@ uses
   uHerancaListagem in 'uHerancaListagem.pas' {FrmHerancaListagem},
   uHerancaCadastro in 'uHerancaCadastro.pas' {FrmHerancaCadastro},
   uFuncoes in 'uFuncoes.pas',
-  uDtmConexao in 'uDtmConexao.pas' {dtmConexao: TDataModule};
+  uDtmConexao in 'uDtmConexao.pas' {dtmConexao: TDataModule},
+  uBancoListagem in 'uBancoListagem.pas' {FrmBancoListagem};
 
 {$R *.res}
 

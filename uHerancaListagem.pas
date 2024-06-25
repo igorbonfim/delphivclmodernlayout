@@ -36,6 +36,9 @@ type
     procedure btnFecharMouseLeave(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnFecharClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure grdListagemKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -110,6 +113,27 @@ procedure TFrmHerancaListagem.FormClose(Sender: TObject;
 begin
   inherited;
   FecharAba(Self.Caption, frmPrincipal.pgcPrincipal);
+end;
+
+procedure TFrmHerancaListagem.FormShow(Sender: TObject);
+begin
+  if QryListagem.SQL.Text = EmptyStr then
+  begin
+    MessageDlg('Nao existe instrução SQL no componente', mtWarning, [mbOk], 0);
+    abort;
+  end;
+  inherited;
+  QryListagem.Open;
+end;
+
+procedure TFrmHerancaListagem.grdListagemKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+
+  // Bloqueia o CTRL + DEL
+  if (Shift = [ssCtrl]) and (Key = 46) then
+    Key := 0;
 end;
 
 end.

@@ -9,6 +9,9 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
   inherited pnlHeader: TPanel
     Width = 1151
     ExplicitWidth = 1151
+    DesignSize = (
+      1151
+      30)
     inherited imgBtnClose: TImage
       Left = 1128
       ExplicitLeft = 1136
@@ -181,6 +184,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
       BorderStyle = bsNone
       Ctl3D = True
       DataSource = dtsListagem
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       ParentCtl3D = False
       TabOrder = 2
       TitleFont.Charset = DEFAULT_CHARSET
@@ -188,6 +192,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
+      OnKeyDown = grdListagemKeyDown
     end
   end
   inherited imgButtons: TImageList
