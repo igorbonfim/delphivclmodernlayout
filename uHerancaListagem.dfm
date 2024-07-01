@@ -94,6 +94,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
         TabOrder = 1
         Text = ''
         TextHint = 'Digite sua pesquisa'
+        OnChange = mskPesquisarChange
       end
       object btnNovo: TJvImgBtn
         Left = 835
@@ -193,6 +194,7 @@ inherited FrmHerancaListagem: TFrmHerancaListagem
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
       OnKeyDown = grdListagemKeyDown
+      OnTitleClick = grdListagemTitleClick
     end
   end
   inherited imgButtons: TImageList

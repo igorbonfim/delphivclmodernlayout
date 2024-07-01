@@ -39,8 +39,15 @@ type
     procedure FormShow(Sender: TObject);
     procedure grdListagemKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure grdListagemTitleClick(Column: TColumn);
+    procedure mskPesquisarChange(Sender: TObject);
   private
     { Private declarations }
+    sIndexFieldNames: string;
+    sNomeColunaDisplay: string;
+    iColunaIndexada: integer;
+    procedure MudarCorGridIndice;
+    procedure RefreshQuery(aQry: TZQuery);
   public
     { Public declarations }
   end;
@@ -53,6 +60,39 @@ implementation
 {$R *.dfm}
 
 uses uPrincipal, uFuncoes;
+
+procedure TFrmHerancaListagem.MudarCorGridIndice;
+var
+  i: integer;
+  index: string;
+begin
+  if QryListagem.IndexFieldNames = EmptyStr then
+    QryListagem.IndexFieldNames := sIndexFieldNames;
+
+  index := QryListagem.IndexFieldNames;
+  index := StringReplace(index, ' Asc', '', [rfReplaceAll]);
+  index := StringReplace(index, ' Desc', '', [rfReplaceAll]);
+
+  for i := 0 to grdListagem.Columns.Count - 1 do
+  begin
+    if UpperCase(grdListagem.Columns[i].FieldName) = UpperCase(trim(index)) then
+    begin
+      grdListagem.Columns[i].Color := clBtnFace;
+      grdListagem.Columns[i].Title.Font.Color := clBlack;
+      grdListagem.Columns[i].Title.Color := clInfoBk;
+      lblPesquisarPor.Caption := 'Pesquisar por ' +grdListagem.Columns[i].Title.Caption;
+      sNomeColunaDisplay := grdListagem.Columns[i].FieldName;
+      iColunaIndexada := i;
+    end
+    else
+    begin
+      grdListagem.Columns[i].Color := clWhite;
+      grdListagem.Columns[i].Title.Font.Color := clBlack;
+      grdListagem.Columns[i].Title.Color := clBtnFace;
+    end;
+  end;
+
+end;
 
 procedure TFrmHerancaListagem.btmApagarMouseEnter(Sender: TObject);
 begin
@@ -122,8 +162,12 @@ begin
     MessageDlg('Nao existe instrução SQL no componente', mtWarning, [mbOk], 0);
     abort;
   end;
+
   inherited;
+
+  sIndexFieldNames := QryListagem.IndexFieldNames;
   QryListagem.Open;
+  MudarCorGridIndice;
 end;
 
 procedure TFrmHerancaListagem.grdListagemKeyDown(Sender: TObject; var Key: Word;
@@ -134,6 +178,57 @@ begin
   // Bloqueia o CTRL + DEL
   if (Shift = [ssCtrl]) and (Key = 46) then
     Key := 0;
+end;
+
+procedure TFrmHerancaListagem.grdListagemTitleClick(Column: TColumn);
+var
+  i: integer;
+begin
+  inherited;
+
+  iColunaIndexada := Column.Index;
+  QryListagem.IndexFieldNames := Column.FieldName;
+  lblPesquisarPor.Caption := 'Pesquisar por ' +Column.Title.Caption;
+  sNomeColunaDisplay := Column.FieldName;
+
+  for i := 0 to grdListagem.Columns.Count - 1 do
+  begin
+    if grdListagem.Columns[i] = Column then
+    begin
+      Column.Color := clBtnFace;
+      Column.Title.Color := clBtnFace;
+      Column.Title.Font.Color := clBlack;
+    end
+    else
+    begin
+      grdListagem.Columns[i].Color := clWhite;
+      grdListagem.Columns[i].Title.Font.Color := clBlack;
+      grdListagem.Columns[i].Title.Color := clBtnFace;
+    end;
+  end;
+end;
+
+procedure TFrmHerancaListagem.mskPesquisarChange(Sender: TObject);
+begin
+  inherited;
+
+  if not QryListagem.IsEmpty then
+    QryListagem.Locate(sNomeColunaDisplay, TMaskEdit(Sender).Text, [loCaseInsensitive, loPartialKey]);
+end;
+
+procedure TFrmHerancaListagem.RefreshQuery(aQry: TZQuery);
+var
+  aBookMark: TBookMark;
+begin
+  try
+    aQry.DisableControls;
+    aBookMark := aQry.Bookmark;
+    aQry.Refresh;
+  finally
+    aQry.GotoBookmark(aBookMark);
+    aQry.EnableControls;
+    aQry.FreeBookmark(aBookMark);
+  end;
 end;
 
 end.
