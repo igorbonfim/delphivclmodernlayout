@@ -52,4 +52,23 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
       end
     end
   end
+  inherited imgButtons: TImageList
+    Left = 448
+  end
+  object QryCadastro: TZQuery
+    UpdateObject = updCadastro
+    Params = <>
+    Left = 136
+    Top = 38
+  end
+  object updCadastro: TZUpdateSQL
+    UseSequenceFieldForRefreshSQL = False
+    Left = 225
+    Top = 38
+  end
+  object dtsCadastro: TDataSource
+    DataSet = QryCadastro
+    Left = 305
+    Top = 38
+  end
 end
