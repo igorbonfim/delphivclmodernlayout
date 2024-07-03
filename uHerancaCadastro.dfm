@@ -1,5 +1,6 @@
 inherited FrmHerancaCadastro: TFrmHerancaCadastro
   Caption = ''
+  KeyPreview = True
   OnKeyDown = FormKeyDown
   TextHeight = 15
   object pnlPrincipal: TPanel [4]
@@ -42,7 +43,7 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
         OnMouseEnter = btnGravarMouseEnter
         OnMouseLeave = btnGravarMouseLeave
       end
-      object btmApagar: TJvImgBtn
+      object btnApagar: TJvImgBtn
         Left = 218
         Top = 7
         Width = 100
@@ -50,9 +51,9 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
         ImageIndex = 9
         Images = imgButtons
         TabOrder = 2
-        OnClick = btmApagarClick
-        OnMouseEnter = btmApagarMouseEnter
-        OnMouseLeave = btmApagarMouseLeave
+        OnClick = btnApagarClick
+        OnMouseEnter = btnApagarMouseEnter
+        OnMouseLeave = btnApagarMouseLeave
       end
     end
   end

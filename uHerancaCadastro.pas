@@ -18,25 +18,28 @@ type
     pnlPrincipal: TPanel;
     btnCancelar: TJvImgBtn;
     btnGravar: TJvImgBtn;
-    btmApagar: TJvImgBtn;
+    btnApagar: TJvImgBtn;
     QryCadastro: TZQuery;
     updCadastro: TZUpdateSQL;
     dtsCadastro: TDataSource;
-    procedure btmApagarMouseEnter(Sender: TObject);
-    procedure btmApagarMouseLeave(Sender: TObject);
+    procedure btnApagarMouseEnter(Sender: TObject);
+    procedure btnApagarMouseLeave(Sender: TObject);
     procedure btnCancelarMouseEnter(Sender: TObject);
     procedure btnCancelarMouseLeave(Sender: TObject);
     procedure btnGravarMouseLeave(Sender: TObject);
     procedure btnGravarMouseEnter(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
-    procedure btmApagarClick(Sender: TObject);
+    procedure btnApagarClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure QryCadastroAfterPost(DataSet: TDataSet);
     procedure QryCadastroAfterDelete(DataSet: TDataSet);
+    procedure FormShow(Sender: TObject);
   private
     procedure PostOrDeleteWithCommitOrRollback(aConexao: TZConnection;
       aQry: TZQuery);
+    procedure ControleEstado(qry: TZQuery; EstadoDoCadastro: TEstadoDoCadastro;
+      BtnSalva, BtnCancelar, BtnExcluir: TJvImgBtn);
     { Private declarations }
   public
     EstadoDoCadastro: TEstadoDoCadastro;
@@ -51,7 +54,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TFrmHerancaCadastro.btmApagarClick(Sender: TObject);
+procedure TFrmHerancaCadastro.btnApagarClick(Sender: TObject);
 begin
   inherited;
   if MessageDlg('Deseja apagar esse registro?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
@@ -61,13 +64,13 @@ begin
   end;
 end;
 
-procedure TFrmHerancaCadastro.btmApagarMouseEnter(Sender: TObject);
+procedure TFrmHerancaCadastro.btnApagarMouseEnter(Sender: TObject);
 begin
   inherited;
   ButtonMouseEnter(Sender, 8);
 end;
 
-procedure TFrmHerancaCadastro.btmApagarMouseLeave(Sender: TObject);
+procedure TFrmHerancaCadastro.btnApagarMouseLeave(Sender: TObject);
 begin
   inherited;
   ButtonMouseEnter(Sender, 9);
@@ -122,6 +125,12 @@ begin
 
     Close;
   end;
+end;
+
+procedure TFrmHerancaCadastro.FormShow(Sender: TObject);
+begin
+  inherited;
+  ControleEstado(QryCadastro, EstadoDoCadastro, btnGravar, btnCancelar, btnApagar);
 end;
 
 procedure TFrmHerancaCadastro.HabilitaDesabilitaTela(chave: Boolean);
@@ -209,6 +218,27 @@ begin
     aQry.Refresh;
   except
     aConexao.Rollback;
+  end;
+end;
+
+procedure TFrmHerancaCadastro.ControleEstado(qry: TZQuery; EstadoDoCadastro: TEstadoDoCadastro; BtnSalva: TJvImgBtn; BtnCancelar: TJvImgBtn; BtnExcluir: TJvImgBtn);
+begin
+  if (EstadoDoCadastro = ecNovo) then
+  begin
+    BtnExcluir.Visible := false;
+    qry.Append;
+  end
+  else if (EstadoDoCadastro = ecModificar) then
+  begin
+    BtnExcluir.Visible := false;
+    qry.Edit;
+  end
+  else
+  begin
+    BtnExcluir.Left := BtnCancelar.Left;
+    BtnSalva.Visible := false;
+    BtnCancelar.Visible := false;
+    BtnExcluir.Visible := true;
   end;
 end;
 
