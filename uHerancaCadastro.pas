@@ -10,7 +10,7 @@ uses
   ZSqlUpdate, uEnum, Vcl.Mask, Vcl.DBCtrls, JvCombobox, JvDBCombobox,
   JvDBControls, Vcl.ComCtrls, JvExComCtrls, JvDateTimePicker,
   JvDBDateTimePicker, JvExMask, JvToolEdit, JvEdit, JvValidateEdit, Vcl.Grids,
-  Vcl.DBGrids;
+  Vcl.DBGrids, ZAbstractConnection, ZConnection, uDtmConexao;
 
 type
   TFrmHerancaCadastro = class(TFrmHerancaBase)
@@ -28,7 +28,15 @@ type
     procedure btnCancelarMouseLeave(Sender: TObject);
     procedure btnGravarMouseLeave(Sender: TObject);
     procedure btnGravarMouseEnter(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnGravarClick(Sender: TObject);
+    procedure btmApagarClick(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure QryCadastroAfterPost(DataSet: TDataSet);
+    procedure QryCadastroAfterDelete(DataSet: TDataSet);
   private
+    procedure PostOrDeleteWithCommitOrRollback(aConexao: TZConnection;
+      aQry: TZQuery);
     { Private declarations }
   public
     EstadoDoCadastro: TEstadoDoCadastro;
@@ -43,6 +51,16 @@ implementation
 
 {$R *.dfm}
 
+procedure TFrmHerancaCadastro.btmApagarClick(Sender: TObject);
+begin
+  inherited;
+  if MessageDlg('Deseja apagar esse registro?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    QryCadastro.Delete;
+    Close;
+  end;
+end;
+
 procedure TFrmHerancaCadastro.btmApagarMouseEnter(Sender: TObject);
 begin
   inherited;
@@ -53,6 +71,13 @@ procedure TFrmHerancaCadastro.btmApagarMouseLeave(Sender: TObject);
 begin
   inherited;
   ButtonMouseEnter(Sender, 9);
+end;
+
+procedure TFrmHerancaCadastro.btnCancelarClick(Sender: TObject);
+begin
+  inherited;
+  QryCadastro.Cancel;
+  Close;
 end;
 
 procedure TFrmHerancaCadastro.btnCancelarMouseEnter(Sender: TObject);
@@ -67,6 +92,13 @@ begin
   ButtonMouseEnter(Sender, 7);
 end;
 
+procedure TFrmHerancaCadastro.btnGravarClick(Sender: TObject);
+begin
+  inherited;
+  QryCadastro.Post;
+  Close;
+end;
+
 procedure TFrmHerancaCadastro.btnGravarMouseEnter(Sender: TObject);
 begin
   inherited;
@@ -77,6 +109,19 @@ procedure TFrmHerancaCadastro.btnGravarMouseLeave(Sender: TObject);
 begin
   inherited;
   ButtonMouseEnter(Sender, 5);
+end;
+
+procedure TFrmHerancaCadastro.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+  if Key = VK_ESCAPE then
+  begin
+    if (QryCadastro.State in [dsInsert, dsEdit]) then
+      QryCadastro.Cancel;
+
+    Close;
+  end;
 end;
 
 procedure TFrmHerancaCadastro.HabilitaDesabilitaTela(chave: Boolean);
@@ -140,6 +185,30 @@ begin
 
     if Components[i] is TDBGrid then
       TDBGrid(Components[i]).Enabled := chave;
+  end;
+end;
+
+procedure TFrmHerancaCadastro.QryCadastroAfterDelete(DataSet: TDataSet);
+begin
+  inherited;
+  PostOrDeleteWithCommitOrRollback(dtmConexao.SQLConnection, QryCadastro);
+end;
+
+procedure TFrmHerancaCadastro.QryCadastroAfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  PostOrDeleteWithCommitOrRollback(dtmConexao.SQLConnection, QryCadastro);
+end;
+
+procedure TFrmHerancaCadastro.PostOrDeleteWithCommitOrRollback(aConexao: TZConnection; aQry: TZQuery);
+begin
+  try
+    aConexao.StartTransaction;
+    aQry.ApplyUpdates;
+    aConexao.Commit;
+    aQry.Refresh;
+  except
+    aConexao.Rollback;
   end;
 end;
 

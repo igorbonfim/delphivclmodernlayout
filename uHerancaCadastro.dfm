@@ -1,5 +1,6 @@
 inherited FrmHerancaCadastro: TFrmHerancaCadastro
   Caption = ''
+  OnKeyDown = FormKeyDown
   TextHeight = 15
   object pnlPrincipal: TPanel [4]
     Left = 1
@@ -25,6 +26,7 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
         ImageIndex = 7
         Images = imgButtons
         TabOrder = 0
+        OnClick = btnCancelarClick
         OnMouseEnter = btnCancelarMouseEnter
         OnMouseLeave = btnCancelarMouseLeave
       end
@@ -36,6 +38,7 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
         ImageIndex = 5
         Images = imgButtons
         TabOrder = 1
+        OnClick = btnGravarClick
         OnMouseEnter = btnGravarMouseEnter
         OnMouseLeave = btnGravarMouseLeave
       end
@@ -47,6 +50,7 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
         ImageIndex = 9
         Images = imgButtons
         TabOrder = 2
+        OnClick = btmApagarClick
         OnMouseEnter = btmApagarMouseEnter
         OnMouseLeave = btmApagarMouseLeave
       end
@@ -57,6 +61,8 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
   end
   object QryCadastro: TZQuery
     UpdateObject = updCadastro
+    AfterPost = QryCadastroAfterPost
+    AfterDelete = QryCadastroAfterDelete
     Params = <>
     Left = 136
     Top = 38
