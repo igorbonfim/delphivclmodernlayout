@@ -10,7 +10,8 @@ uses
   uFuncoes in 'uFuncoes.pas',
   uDtmConexao in 'uDtmConexao.pas' {dtmConexao: TDataModule},
   uBancoListagem in 'uBancoListagem.pas' {FrmBancoListagem},
-  uEnum in 'uEnum.pas';
+  uEnum in 'uEnum.pas',
+  uBancoCadastro in 'uBancoCadastro.pas' {FrmBancoCadastro};
 
 {$R *.res}
 

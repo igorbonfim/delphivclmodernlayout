@@ -47,9 +47,10 @@ type
     sNomeColunaDisplay: string;
     iColunaIndexada: integer;
     procedure MudarCorGridIndice;
-    procedure RefreshQuery(aQry: TZQuery);
+
   public
     { Public declarations }
+    procedure RefreshQuery(aQry: TZQuery);
   end;
 
 var

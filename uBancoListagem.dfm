@@ -9,12 +9,24 @@ inherited FrmBancoListagem: TFrmBancoListagem
     end
   end
   inherited pnlFormPrincipal: TPanel
+    inherited pnlFormPrincipalTop: TPanel
+      inherited btnNovo: TJvImgBtn
+        OnClick = btnNovoClick
+      end
+      inherited btnModificar: TJvImgBtn
+        OnClick = btnModificarClick
+      end
+      inherited btmApagar: TJvImgBtn
+        OnClick = btmApagarClick
+      end
+    end
     inherited pnlFormPrincipalBottom: TPanel
       inherited DBNavigator1: TDBNavigator
         Hints.Strings = ()
       end
     end
     inherited grdListagem: TDBGrid
+      OnDblClick = btnModificarClick
       Columns = <
         item
           Expanded = False

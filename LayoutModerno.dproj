@@ -131,6 +131,10 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uEnum.pas"/>
+        <DCCReference Include="uBancoCadastro.pas">
+            <Form>FrmBancoCadastro</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

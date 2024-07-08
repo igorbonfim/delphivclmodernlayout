@@ -226,15 +226,18 @@ begin
   if (EstadoDoCadastro = ecNovo) then
   begin
     BtnExcluir.Visible := false;
+    lblTitulo.Caption := lblTitulo.Caption + ' - [NOVO]';
     qry.Append;
   end
   else if (EstadoDoCadastro = ecModificar) then
   begin
     BtnExcluir.Visible := false;
+    lblTitulo.Caption := lblTitulo.Caption + ' - [MODIFICAR]';
     qry.Edit;
   end
   else
   begin
+    lblTitulo.Caption := lblTitulo.Caption + ' - [APAGAR]';
     BtnExcluir.Left := BtnCancelar.Left;
     BtnSalva.Visible := false;
     BtnCancelar.Visible := false;
