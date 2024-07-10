@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uSplash, Vcl.StdCtrls, uHerancaBase,
   Vcl.Buttons, uHerancaListagem, Vcl.ExtCtrls, Vcl.ComCtrls, uDtmConexao,
-  uBancoListagem;
+  uBancoListagem, Vcl.Imaging.pngimage, System.ImageList, Vcl.ImgList,
+  JvExStdCtrls, JvButton, JvCtrls;
 
 type
   TFrmPrincipal = class(TForm)
@@ -19,13 +20,23 @@ type
     pgcPrincipal: TPageControl;
     tbsMenu: TTabSheet;
     BitBtn1: TBitBtn;
+    pnlPrincipalTop: TPanel;
+    Image1: TImage;
+    imgButtons: TImageList;
+    btnFechar: TJvImgBtn;
+    btnCriarMenu: TBitBtn;
+    scbIcones: TScrollBox;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnCriarMenuClick(Sender: TObject);
   private
     { Private declarations }
+    pnlAcao, pnlDescAcao, pnlLeft, pnlRight, pnlTop: TPanel;
+    lblDescAcao: TLabel;
+    imgIcone: TImage;
   public
     { Public declarations }
   end;
@@ -43,6 +54,100 @@ uses uFuncoes;
 procedure TFrmPrincipal.BitBtn1Click(Sender: TObject);
 begin
   CriarAba(TfrmBancoListagem, pgcPrincipal, -1);
+end;
+
+procedure TFrmPrincipal.btnCriarMenuClick(Sender: TObject);
+var
+  i, iLeft, iTop: integer;
+  cColorPanelIcone: TColor;
+begin
+  iLeft := 6;
+  iTop  := 6;
+  i     := 0;
+  cColorPanelIcone := clBlack;
+
+  while i <= 20 do
+  begin
+    pnlAcao := TPanel.Create(scbIcones);
+    pnlAcao.Parent := scbIcones;
+    pnlAcao.BevelOuter := bvNone;
+    pnlAcao.Height := 82;
+    pnlAcao.Left := iLeft;
+    pnlAcao.Width := 130;
+    pnlAcao.Name := '___pnl___'+IntToStr(i);
+    pnlAcao.Top := iTop;
+    pnlAcao.Caption := EmptyStr;
+    pnlAcao.Tag := 9999;
+    pnlAcao.Color := clWhite;
+    pnlAcao.ParentBackground := false;
+
+    pnlDescAcao := TPanel.Create(Application);
+    pnlDescAcao.Parent := pnlAcao;
+    pnlDescAcao.Color := cColorPanelIcone;
+    pnlDescAcao.Height := 15;
+    pnlDescAcao.Align := alBottom;
+    pnlDescAcao.BevelOuter := bvNone;
+    pnlDescAcao.ParentBackground := false;
+
+    pnlLeft := TPanel.Create(Application);
+    pnlLeft.Parent := pnlAcao;
+    pnlLeft.Align := alLeft;
+    pnlLeft.Width := 1;
+    pnlLeft.Color := cColorPanelIcone;
+    pnlLeft.BevelOuter := bvNone;
+    pnlLeft.ParentBackground := false;
+
+    pnlRight := TPanel.Create(Application);
+    pnlRight.Parent := pnlAcao;
+    pnlRight.Align := alRight;
+    pnlRight.Width := 1;
+    pnlRight.Color := cColorPanelIcone;
+    pnlRight.BevelOuter := bvNone;
+
+    pnlTop := TPanel.Create(Application);
+    pnlTop.Parent := pnlAcao;
+    pnlTop.Align := alTop;
+    pnlTop.Height := 1;
+    pnlTop.Color := cColorPanelIcone;
+    pnlTop.BevelOuter := bvNone;
+    pnlTop.ParentBackground := false;
+
+    lblDescAcao := TLabel.Create(Application);
+    lblDescAcao.Parent := pnlDescAcao;
+    lblDescAcao.Align := alClient;
+    lblDescAcao.Alignment := taCenter;
+    lblDescAcao.Font.Style := [fsUnderline, fsBold];
+    lblDescAcao.Font.Name := 'Tahoma';
+    lblDescAcao.Font.Size := 8;
+    lblDescAcao.Font.Color := clWhite;
+    lblDescAcao.Cursor := crHandPoint;
+    lblDescAcao.Caption := 'Cadastro de Banco';
+    lblDescAcao.Hint := 'TfrmBancoListagem';
+    lblDescAcao.HelpKeyword := '1';
+    lblDescAcao.ShowHint := false;
+    lblDescAcao.OnClick := nil;
+
+    imgIcone := TImage.Create(Application);
+    imgIcone.Parent := pnlAcao;
+    imgIcone.Align := alClient;
+    imgIcone.Transparent := true;
+    imgIcone.Center := true;
+    imgIcone.Picture.LoadFromFile('C:\Projetos\Sistema Delphi com Layout Moderno - Udemy\Images\BancoFebraban.png');
+    imgIcone.Hint := 'TfrmBancoListagem';
+    imgIcone.HelpKeyword := '1';
+    imgIcone.ShowHint := false;
+    imgIcone.OnClick := nil;
+
+    iLeft := iLeft + pnlAcao.Width + 6;
+
+    if iLeft > (self.Width - (pnlPrincipalLeft.Width + pnlAcao.Width)) then
+    begin
+      iLeft := 6;
+      iTop := iTop + pnlAcao.Height + 6;
+    end;
+
+    Inc(i);
+  end;
 end;
 
 procedure TFrmPrincipal.Button1Click(Sender: TObject);
