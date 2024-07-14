@@ -37,6 +37,7 @@ type
     pnlAcao, pnlDescAcao, pnlLeft, pnlRight, pnlTop: TPanel;
     lblDescAcao: TLabel;
     imgIcone: TImage;
+    procedure ClickChamada(Sender: TObject);
   public
     { Public declarations }
   end;
@@ -125,7 +126,7 @@ begin
     lblDescAcao.Hint := 'TfrmBancoListagem';
     lblDescAcao.HelpKeyword := '1';
     lblDescAcao.ShowHint := false;
-    lblDescAcao.OnClick := nil;
+    lblDescAcao.OnClick := ClickChamada;
 
     imgIcone := TImage.Create(Application);
     imgIcone.Parent := pnlAcao;
@@ -136,7 +137,7 @@ begin
     imgIcone.Hint := 'TfrmBancoListagem';
     imgIcone.HelpKeyword := '1';
     imgIcone.ShowHint := false;
-    imgIcone.OnClick := nil;
+    imgIcone.OnClick := ClickChamada;
 
     iLeft := iLeft + pnlAcao.Width + 6;
 
@@ -148,6 +149,14 @@ begin
 
     Inc(i);
   end;
+end;
+
+procedure TFrmPrincipal.ClickChamada(Sender: TObject);
+begin
+  if (Sender is TLabel) then
+    CriarAba(TFormClass(FindClass(TLabel(Sender).Hint)), pgcPrincipal, -1)
+  else if (Sender is TImage) then
+    CriarAba(TFormClass(FindClass(TLabel(Sender).Hint)), pgcPrincipal, -1);
 end;
 
 procedure TFrmPrincipal.Button1Click(Sender: TObject);
