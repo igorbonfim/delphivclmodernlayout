@@ -38,6 +38,8 @@ type
     lblDescAcao: TLabel;
     imgIcone: TImage;
     procedure ClickChamada(Sender: TObject);
+    procedure ControleMouseEnterTImage(Sender: TObject);
+    procedure ControleMouseLeaveTImage(Sender: TObject);
   public
     { Public declarations }
   end;
@@ -138,6 +140,8 @@ begin
     imgIcone.HelpKeyword := '1';
     imgIcone.ShowHint := false;
     imgIcone.OnClick := ClickChamada;
+    imgIcone.OnMouseEnter := ControleMouseEnterTImage;
+    imgIcone.OnMouseLeave := ControleMouseLeaveTImage;
 
     iLeft := iLeft + pnlAcao.Width + 6;
 
@@ -148,6 +152,30 @@ begin
     end;
 
     Inc(i);
+  end;
+end;
+
+procedure TFrmPrincipal.ControleMouseEnterTImage(Sender: TObject);
+var
+  ControleAtivo: TWinControl;
+begin
+  ControleAtivo := TImage(Sender).Parent;
+  if ControleAtivo is TPanel then
+  begin
+    TPanel(ControleAtivo).Color := $006CC2F0;
+    TPanel(ControleAtivo).ParentBackground := false;
+  end;
+end;
+
+procedure TFrmPrincipal.ControleMouseLeaveTImage(Sender: TObject);
+var
+  ControleAtivo: TWinControl;
+begin
+  ControleAtivo := TImage(Sender).Parent;
+  if ControleAtivo is TPanel then
+  begin
+    TPanel(ControleAtivo).Color := clWhite;
+    TPanel(ControleAtivo).ParentBackground := false;
   end;
 end;
 
