@@ -61,6 +61,7 @@ inherited FrmHerancaCadastro: TFrmHerancaCadastro
     Left = 448
   end
   object QryCadastro: TZQuery
+    Connection = dtmConexao.SQLConnection
     UpdateObject = updCadastro
     AfterPost = QryCadastroAfterPost
     AfterDelete = QryCadastroAfterDelete

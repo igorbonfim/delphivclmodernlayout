@@ -81,7 +81,6 @@ inherited FrmBancoCadastro: TFrmBancoCadastro
     end
   end
   inherited QryCadastro: TZQuery
-    Connection = dtmConexao.SQLConnection
     SQL.Strings = (
       'SELECT * FROM BANCO WHERE BANCOID = :BANCOID')
     Params = <
@@ -118,5 +117,48 @@ inherited FrmBancoCadastro: TFrmBancoCadastro
       FieldName = 'WebSite'
       Size = 100
     end
+  end
+  inherited updCadastro: TZUpdateSQL
+    DeleteSQL.Strings = (
+      'DELETE FROM BANCO'
+      'WHERE'
+      
+        '  ((BANCO.BancoId IS NULL AND :OLD_BancoId IS NULL) OR (BANCO.Ba' +
+        'ncoId = :OLD_BancoId))')
+    InsertSQL.Strings = (
+      'INSERT INTO BANCO'
+      '  (CodBanco, DescBanco, WebSite)'
+      'VALUES'
+      '  (:CodBanco, :DescBanco, :WebSite)')
+    ModifySQL.Strings = (
+      'UPDATE BANCO SET'
+      '  CodBanco = :CodBanco,'
+      '  DescBanco = :DescBanco,'
+      '  WebSite = :WebSite'
+      'WHERE'
+      
+        '  ((BANCO.BancoId IS NULL AND :OLD_BancoId IS NULL) OR (BANCO.Ba' +
+        'ncoId = :OLD_BancoId))')
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'CodBanco'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'DescBanco'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'WebSite'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_BancoId'
+        ParamType = ptUnknown
+      end>
   end
 end

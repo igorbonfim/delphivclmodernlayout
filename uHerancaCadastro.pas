@@ -98,8 +98,12 @@ end;
 procedure TFrmHerancaCadastro.btnGravarClick(Sender: TObject);
 begin
   inherited;
-  QryCadastro.Post;
-  Close;
+  try
+    QryCadastro.Post;
+    Close;
+  except on ex:exception do
+    ShowMessage(ex.Message);
+  end;
 end;
 
 procedure TFrmHerancaCadastro.btnGravarMouseEnter(Sender: TObject);
