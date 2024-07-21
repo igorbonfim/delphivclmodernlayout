@@ -23,12 +23,25 @@ object dtmConexao: TdtmConexao
   end
   object QryMenu: TZQuery
     Connection = SQLConnection
+    CachedUpdates = True
     SQL.Strings = (
       
         'SELECT menuId, titulo, nomeImagem, nomeFormulario, processo FROM' +
-        ' Menu')
-    Params = <>
+        ' Menu'
+      'WHERE processo = :processo')
+    Params = <
+      item
+        DataType = ftUnknown
+        Name = 'processo'
+        ParamType = ptUnknown
+      end>
     Left = 216
     Top = 24
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'processo'
+        ParamType = ptUnknown
+      end>
   end
 end

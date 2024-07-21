@@ -26,12 +26,14 @@ type
     btnFechar: TJvImgBtn;
     btnCriarMenu: TBitBtn;
     scbIcones: TScrollBox;
+    btnConfiguracoes: TBitBtn;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCriarMenuClick(Sender: TObject);
+    procedure btnConfiguracoesClick(Sender: TObject);
   private
     { Private declarations }
     pnlAcao, pnlDescAcao, pnlLeft, pnlRight, pnlTop: TPanel;
@@ -40,6 +42,8 @@ type
     procedure ClickChamada(Sender: TObject);
     procedure ControleMouseEnterTImage(Sender: TObject);
     procedure ControleMouseLeaveTImage(Sender: TObject);
+    procedure DestroyIconesMenuDinamico;
+    procedure MontarMenu(aProcesso: string);
   public
     { Public declarations }
   end;
@@ -59,7 +63,7 @@ begin
   CriarAba(TfrmBancoListagem, pgcPrincipal, -1);
 end;
 
-procedure TFrmPrincipal.btnCriarMenuClick(Sender: TObject);
+procedure TFrmPrincipal.MontarMenu(aProcesso: string);
 var
   iLeft, iTop: integer;
   cColorPanelIcone: TColor;
@@ -68,7 +72,11 @@ begin
   iTop  := 6;
   cColorPanelIcone := clBlack;
 
+  DestroyIconesMenuDinamico;
+  dtmConexao.QryMenu.Close;
+  dtmConexao.QryMenu.ParamByName('processo').AsString := aProcesso;
   dtmConexao.QryMenu.Open;
+
   while not dtmConexao.QryMenu.Eof do
   begin
     pnlAcao := TPanel.Create(scbIcones);
@@ -157,6 +165,19 @@ begin
   pgcPrincipal.ActivePage := tbsMenu;
 end;
 
+procedure TFrmPrincipal.DestroyIconesMenuDinamico;
+var
+  i: integer;
+begin
+  i := scbIcones.ComponentCount;
+  while i > 0 do
+  begin
+    Dec(i);
+    if TComponent(scbIcones.Components[i]).Tag = 9999 then
+      TComponent(scbIcones.Components[i]).Destroy;
+  end;
+end;
+
 procedure TFrmPrincipal.ControleMouseEnterTImage(Sender: TObject);
 var
   ControleAtivo: TWinControl;
@@ -187,6 +208,16 @@ begin
     CriarAba(TFormClass(FindClass(TLabel(Sender).Hint)), pgcPrincipal, -1)
   else if (Sender is TImage) then
     CriarAba(TFormClass(FindClass(TLabel(Sender).Hint)), pgcPrincipal, -1);
+end;
+
+procedure TFrmPrincipal.btnConfiguracoesClick(Sender: TObject);
+begin
+  MontarMenu('CNF');
+end;
+
+procedure TFrmPrincipal.btnCriarMenuClick(Sender: TObject);
+begin
+  MontarMenu('FIN');
 end;
 
 procedure TFrmPrincipal.Button1Click(Sender: TObject);

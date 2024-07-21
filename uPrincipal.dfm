@@ -37,9 +37,18 @@ object FrmPrincipal: TFrmPrincipal
       Top = 128
       Width = 99
       Height = 25
-      Caption = 'Criar Menu'
+      Caption = 'FInanceiro'
       TabOrder = 1
       OnClick = btnCriarMenuClick
+    end
+    object btnConfiguracoes: TBitBtn
+      Left = 40
+      Top = 159
+      Width = 99
+      Height = 25
+      Caption = 'Configura'#231#245'es'
+      TabOrder = 2
+      OnClick = btnConfiguracoesClick
     end
   end
   object pnlPrincipalCenter: TPanel
@@ -120,7 +129,6 @@ object FrmPrincipal: TFrmPrincipal
     Color = clInfoText
     ParentBackground = False
     TabOrder = 2
-    ExplicitTop = 4
     DesignSize = (
       1109
       52)
