@@ -19,7 +19,6 @@ type
     pnlPrincipalCenterBottom: TPanel;
     pgcPrincipal: TPageControl;
     tbsMenu: TTabSheet;
-    BitBtn1: TBitBtn;
     pnlPrincipalTop: TPanel;
     Image1: TImage;
     imgButtons: TImageList;
@@ -27,13 +26,15 @@ type
     btnCriarMenu: TBitBtn;
     scbIcones: TScrollBox;
     btnConfiguracoes: TBitBtn;
+    Panel1: TPanel;
+    Label1: TLabel;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure BitBtn1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCriarMenuClick(Sender: TObject);
     procedure btnConfiguracoesClick(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
   private
     { Private declarations }
     pnlAcao, pnlDescAcao, pnlLeft, pnlRight, pnlTop: TPanel;
@@ -58,11 +59,6 @@ implementation
 
 uses uFuncoes;
 
-procedure TFrmPrincipal.BitBtn1Click(Sender: TObject);
-begin
-  CriarAba(TfrmBancoListagem, pgcPrincipal, -1);
-end;
-
 procedure TFrmPrincipal.MontarMenu(aProcesso: string);
 var
   iLeft, iTop: integer;
@@ -70,7 +66,7 @@ var
 begin
   iLeft := 6;
   iTop  := 6;
-  cColorPanelIcone := clBlack;
+  cColorPanelIcone := $00EBDDDA;
 
   DestroyIconesMenuDinamico;
   dtmConexao.QryMenu.Close;
@@ -130,7 +126,7 @@ begin
     lblDescAcao.Font.Style := [fsUnderline, fsBold];
     lblDescAcao.Font.Name := 'Tahoma';
     lblDescAcao.Font.Size := 8;
-    lblDescAcao.Font.Color := clWhite;
+    lblDescAcao.Font.Color := clBlack;
     lblDescAcao.Cursor := crHandPoint;
     lblDescAcao.Caption := dtmConexao.QryMenu.FieldByName('titulo').AsString;
     lblDescAcao.Hint := dtmConexao.QryMenu.FieldByName('nomeFormulario').AsString;
@@ -220,6 +216,11 @@ begin
   MontarMenu('FIN');
 end;
 
+procedure TFrmPrincipal.btnFecharClick(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
 procedure TFrmPrincipal.Button1Click(Sender: TObject);
 begin
   frmHerancaBase := TfrmHerancaBase.Create(Self);
@@ -248,7 +249,10 @@ begin
   frmSplash := TfrmSplash.Create(Self);
   frmSplash.Show;
   frmSplash.Refresh;
-  Sleep(2000);
+
+  MontarMenu('FIN');
+
+  Sleep(1000);
 
   if Assigned(frmSplash) then
     frmSplash.Free;

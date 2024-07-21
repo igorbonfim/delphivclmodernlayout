@@ -17,65 +17,63 @@ object FrmPrincipal: TFrmPrincipal
   TextHeight = 15
   object pnlPrincipalLeft: TPanel
     Left = 0
-    Top = 52
+    Top = 62
     Width = 185
-    Height = 714
+    Height = 704
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 0
-    object BitBtn1: TBitBtn
-      Left = 40
-      Top = 80
-      Width = 99
-      Height = 25
-      Caption = 'Teste Listagem'
-      TabOrder = 0
-      OnClick = BitBtn1Click
-    end
+    ExplicitLeft = 4
+    ExplicitTop = 45
+    ExplicitHeight = 714
     object btnCriarMenu: TBitBtn
-      Left = 40
-      Top = 128
+      Left = 48
+      Top = 10
       Width = 99
       Height = 25
       Caption = 'FInanceiro'
-      TabOrder = 1
+      TabOrder = 0
       OnClick = btnCriarMenuClick
     end
     object btnConfiguracoes: TBitBtn
-      Left = 40
-      Top = 159
+      Left = 48
+      Top = 41
       Width = 99
       Height = 25
       Caption = 'Configura'#231#245'es'
-      TabOrder = 2
+      TabOrder = 1
       OnClick = btnConfiguracoesClick
     end
   end
   object pnlPrincipalCenter: TPanel
     Left = 185
-    Top = 52
+    Top = 62
     Width = 924
-    Height = 714
+    Height = 704
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitTop = 52
+    ExplicitHeight = 714
     object pnlPrincipalCenterLeft: TPanel
       Left = 0
       Top = 10
       Width = 10
-      Height = 694
+      Height = 684
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitHeight = 694
     end
     object pnlPrincipalCenterRight: TPanel
       Left = 914
       Top = 10
       Width = 10
-      Height = 694
+      Height = 684
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitHeight = 694
     end
     object pnlPrincipalCenterTop: TPanel
       Left = 0
@@ -88,33 +86,36 @@ object FrmPrincipal: TFrmPrincipal
     end
     object pnlPrincipalCenterBottom: TPanel
       Left = 0
-      Top = 704
+      Top = 694
       Width = 924
       Height = 10
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 3
+      ExplicitTop = 704
     end
     object pgcPrincipal: TPageControl
       Left = 10
       Top = 10
       Width = 904
-      Height = 694
+      Height = 684
       ActivePage = tbsMenu
       Align = alClient
       TabOrder = 4
+      ExplicitHeight = 694
       object tbsMenu: TTabSheet
         Caption = 'Menu'
         object scbIcones: TScrollBox
           Left = 0
           Top = 0
           Width = 896
-          Height = 664
+          Height = 654
           Align = alClient
           BevelInner = bvNone
           Ctl3D = False
           ParentCtl3D = False
           TabOrder = 0
+          ExplicitHeight = 664
         end
       end
     end
@@ -123,15 +124,15 @@ object FrmPrincipal: TFrmPrincipal
     Left = 0
     Top = 0
     Width = 1109
-    Height = 52
+    Height = 62
     Align = alTop
     BevelOuter = bvNone
-    Color = clInfoText
+    Color = 9502720
     ParentBackground = False
     TabOrder = 2
     DesignSize = (
       1109
-      52)
+      62)
     object Image1: TImage
       Left = 8
       Top = 7
@@ -195,6 +196,19 @@ object FrmPrincipal: TFrmPrincipal
         7259F2F730C21419AB32A6E61FE53408D64E0E7B8BD85DFCED789FC6BF00F925
         6032D8E676DC0000000049454E44AE426082}
     end
+    object Label1: TLabel
+      Left = 45
+      Top = 4
+      Width = 416
+      Height = 40
+      Caption = 'GERENCIADOR FINANCEIRO'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -33
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
     object btnFechar: TJvImgBtn
       Left = 999
       Top = 6
@@ -204,6 +218,18 @@ object FrmPrincipal: TFrmPrincipal
       ImageIndex = 1
       Images = imgButtons
       TabOrder = 0
+      OnClick = btnFecharClick
+    end
+    object Panel1: TPanel
+      Left = 0
+      Top = 54
+      Width = 1109
+      Height = 8
+      Align = alBottom
+      Color = 15457754
+      ParentBackground = False
+      TabOrder = 1
+      ExplicitTop = 57
     end
   end
   object imgButtons: TImageList
