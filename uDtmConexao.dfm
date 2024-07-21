@@ -21,4 +21,14 @@ object dtmConexao: TdtmConexao
     Left = 56
     Top = 24
   end
+  object QryMenu: TZQuery
+    Connection = SQLConnection
+    SQL.Strings = (
+      
+        'SELECT menuId, titulo, nomeImagem, nomeFormulario, processo FROM' +
+        ' Menu')
+    Params = <>
+    Left = 216
+    Top = 24
+  end
 end

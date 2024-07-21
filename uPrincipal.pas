@@ -61,15 +61,15 @@ end;
 
 procedure TFrmPrincipal.btnCriarMenuClick(Sender: TObject);
 var
-  i, iLeft, iTop: integer;
+  iLeft, iTop: integer;
   cColorPanelIcone: TColor;
 begin
   iLeft := 6;
   iTop  := 6;
-  i     := 0;
   cColorPanelIcone := clBlack;
 
-  while i <= 20 do
+  dtmConexao.QryMenu.Open;
+  while not dtmConexao.QryMenu.Eof do
   begin
     pnlAcao := TPanel.Create(scbIcones);
     pnlAcao.Parent := scbIcones;
@@ -77,7 +77,7 @@ begin
     pnlAcao.Height := 82;
     pnlAcao.Left := iLeft;
     pnlAcao.Width := 130;
-    pnlAcao.Name := '___pnl___'+IntToStr(i);
+    pnlAcao.Name := '___pnl___'+dtmConexao.QryMenu.FieldByName('menuId').AsString;
     pnlAcao.Top := iTop;
     pnlAcao.Caption := EmptyStr;
     pnlAcao.Tag := 9999;
@@ -124,8 +124,8 @@ begin
     lblDescAcao.Font.Size := 8;
     lblDescAcao.Font.Color := clWhite;
     lblDescAcao.Cursor := crHandPoint;
-    lblDescAcao.Caption := 'Cadastro de Banco';
-    lblDescAcao.Hint := 'TfrmBancoListagem';
+    lblDescAcao.Caption := dtmConexao.QryMenu.FieldByName('titulo').AsString;
+    lblDescAcao.Hint := dtmConexao.QryMenu.FieldByName('nomeFormulario').AsString;
     lblDescAcao.HelpKeyword := '1';
     lblDescAcao.ShowHint := false;
     lblDescAcao.OnClick := ClickChamada;
@@ -135,8 +135,8 @@ begin
     imgIcone.Align := alClient;
     imgIcone.Transparent := true;
     imgIcone.Center := true;
-    imgIcone.Picture.LoadFromFile('C:\Projetos\Sistema Delphi com Layout Moderno - Udemy\Images\BancoFebraban.png');
-    imgIcone.Hint := 'TfrmBancoListagem';
+    imgIcone.Picture.LoadFromFile('C:\Projetos\Sistema Delphi com Layout Moderno - Udemy\Images\' +dtmConexao.QryMenu.FieldByName('nomeImagem').AsString);
+    imgIcone.Hint := dtmConexao.QryMenu.FieldByName('nomeFormulario').AsString;
     imgIcone.HelpKeyword := '1';
     imgIcone.ShowHint := false;
     imgIcone.OnClick := ClickChamada;
@@ -151,8 +151,10 @@ begin
       iTop := iTop + pnlAcao.Height + 6;
     end;
 
-    Inc(i);
+    dtmConexao.QryMenu.Next;
   end;
+
+  pgcPrincipal.ActivePage := tbsMenu;
 end;
 
 procedure TFrmPrincipal.ControleMouseEnterTImage(Sender: TObject);
