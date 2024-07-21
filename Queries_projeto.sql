@@ -22,3 +22,9 @@ INSERT INTO Banco (CodBanco, DescBanco, WebSite) VALUES('003', 'Banco da Amazôni
 INSERT INTO Banco (CodBanco, DescBanco, WebSite) VALUES('004', 'Banco do Nordeste do Brasil S.A', 'www.banconordeste.gov.br');
 INSERT INTO Banco (CodBanco, DescBanco, WebSite) VALUES('104', 'Caixa Econômica Federal', 'www.caixa.gov.br');
 
+insert into Menu(titulo, nomeImagem, nomeFormulario, processo) values('Cadastro de Banco', 'BancoFebraban.png', 'TFrmBancoListagem', 'FIN');
+
+insert into Menu(titulo, nomeImagem, nomeFormulario, processo) values('Cadastro de Cartão', 'CartaoCredito.png', 'TFrmBancoListagem', 'FIN');
+
+insert into Menu(titulo, nomeImagem, nomeFormulario, processo) values('Configurações', 'Configuracao.png', 'TFrmBancoListagem', 'CNF');
+
