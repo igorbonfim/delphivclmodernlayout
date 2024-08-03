@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uSplash, Vcl.StdCtrls, uHerancaBase,
   Vcl.Buttons, uHerancaListagem, Vcl.ExtCtrls, Vcl.ComCtrls, uDtmConexao,
   uBancoListagem, Vcl.Imaging.pngimage, System.ImageList, Vcl.ImgList,
-  JvExStdCtrls, JvButton, JvCtrls;
+  JvExStdCtrls, JvButton, JvCtrls, Vcl.WinXCtrls;
 
 type
   TFrmPrincipal = class(TForm)
@@ -28,6 +28,7 @@ type
     btnConfiguracoes: TBitBtn;
     Panel1: TPanel;
     Label1: TLabel;
+    edtLocalizaMenu: TSearchBox;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -35,6 +36,7 @@ type
     procedure btnCriarMenuClick(Sender: TObject);
     procedure btnConfiguracoesClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
+    procedure edtLocalizaMenuInvokeSearch(Sender: TObject);
   private
     { Private declarations }
     pnlAcao, pnlDescAcao, pnlLeft, pnlRight, pnlTop: TPanel;
@@ -44,7 +46,9 @@ type
     procedure ControleMouseEnterTImage(Sender: TObject);
     procedure ControleMouseLeaveTImage(Sender: TObject);
     procedure DestroyIconesMenuDinamico;
-    procedure MontarMenu(aProcesso: string);
+    procedure MontarMenu;
+    procedure FiltrarMenuProcesso(aProcesso: string);
+    procedure FiltrarMenuLikeTitulo(aLike: string);
   public
     { Public declarations }
   end;
@@ -59,7 +63,29 @@ implementation
 
 uses uFuncoes;
 
-procedure TFrmPrincipal.MontarMenu(aProcesso: string);
+procedure TFrmPrincipal.FiltrarMenuProcesso(aProcesso: string);
+begin
+  dtmConexao.QryMenu.Close;
+  dtmConexao.QryMenu.SQL.Clear;
+  dtmConexao.QryMenu.SQL.Add(' SELECT menuId, titulo, nomeImagem, nomeFormulario, processo FROM Menu ');
+  dtmConexao.QryMenu.SQL.Add(' WHERE processo = :processo ');
+  dtmConexao.QryMenu.ParamByName('processo').AsString := aProcesso;
+  dtmConexao.QryMenu.Open;
+  MontarMenu;
+end;
+
+procedure TFrmPrincipal.FiltrarMenuLikeTitulo(aLike: string);
+begin
+  dtmConexao.QryMenu.Close;
+  dtmConexao.QryMenu.SQL.Clear;
+  dtmConexao.QryMenu.SQL.Add(' SELECT menuId, titulo, nomeImagem, nomeFormulario, processo FROM Menu ');
+  dtmConexao.QryMenu.SQL.Add(' WHERE titulo like :titulo ');
+  dtmConexao.QryMenu.ParamByName('titulo').AsString :=  '%' + aLike + '%';
+  dtmConexao.QryMenu.Open;
+  MontarMenu;
+end;
+
+procedure TFrmPrincipal.MontarMenu;
 var
   iLeft, iTop: integer;
   cColorPanelIcone: TColor;
@@ -69,9 +95,6 @@ begin
   cColorPanelIcone := $00EBDDDA;
 
   DestroyIconesMenuDinamico;
-  dtmConexao.QryMenu.Close;
-  dtmConexao.QryMenu.ParamByName('processo').AsString := aProcesso;
-  dtmConexao.QryMenu.Open;
 
   while not dtmConexao.QryMenu.Eof do
   begin
@@ -174,6 +197,11 @@ begin
   end;
 end;
 
+procedure TFrmPrincipal.edtLocalizaMenuInvokeSearch(Sender: TObject);
+begin
+  FiltrarMenuLikeTitulo(TSearchBox(Sender).Text);
+end;
+
 procedure TFrmPrincipal.ControleMouseEnterTImage(Sender: TObject);
 var
   ControleAtivo: TWinControl;
@@ -208,12 +236,12 @@ end;
 
 procedure TFrmPrincipal.btnConfiguracoesClick(Sender: TObject);
 begin
-  MontarMenu('CNF');
+  FiltrarMenuProcesso('CNF');
 end;
 
 procedure TFrmPrincipal.btnCriarMenuClick(Sender: TObject);
 begin
-  MontarMenu('FIN');
+  FiltrarMenuProcesso('FIN');
 end;
 
 procedure TFrmPrincipal.btnFecharClick(Sender: TObject);
@@ -250,7 +278,7 @@ begin
   frmSplash.Show;
   frmSplash.Refresh;
 
-  MontarMenu('FIN');
+  FiltrarMenuProcesso('FIN');
 
   Sleep(1000);
 

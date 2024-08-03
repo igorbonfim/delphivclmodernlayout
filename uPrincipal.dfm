@@ -2,8 +2,8 @@ object FrmPrincipal: TFrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Menu Principal'
-  ClientHeight = 766
-  ClientWidth = 1109
+  ClientHeight = 758
+  ClientWidth = 1107
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,15 +17,14 @@ object FrmPrincipal: TFrmPrincipal
   TextHeight = 15
   object pnlPrincipalLeft: TPanel
     Left = 0
-    Top = 62
+    Top = 81
     Width = 185
-    Height = 704
+    Height = 677
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 4
-    ExplicitTop = 45
-    ExplicitHeight = 714
+    ExplicitTop = 72
+    ExplicitHeight = 686
     object btnCriarMenu: TBitBtn
       Left = 48
       Top = 10
@@ -47,38 +46,38 @@ object FrmPrincipal: TFrmPrincipal
   end
   object pnlPrincipalCenter: TPanel
     Left = 185
-    Top = 62
-    Width = 924
-    Height = 704
+    Top = 81
+    Width = 922
+    Height = 677
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitTop = 52
-    ExplicitHeight = 714
+    ExplicitTop = 72
+    ExplicitHeight = 686
     object pnlPrincipalCenterLeft: TPanel
       Left = 0
       Top = 10
       Width = 10
-      Height = 684
+      Height = 657
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitHeight = 694
+      ExplicitHeight = 666
     end
     object pnlPrincipalCenterRight: TPanel
-      Left = 914
+      Left = 912
       Top = 10
       Width = 10
-      Height = 684
+      Height = 657
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitHeight = 694
+      ExplicitHeight = 666
     end
     object pnlPrincipalCenterTop: TPanel
       Left = 0
       Top = 0
-      Width = 924
+      Width = 922
       Height = 10
       Align = alTop
       BevelOuter = bvNone
@@ -86,36 +85,36 @@ object FrmPrincipal: TFrmPrincipal
     end
     object pnlPrincipalCenterBottom: TPanel
       Left = 0
-      Top = 694
-      Width = 924
+      Top = 667
+      Width = 922
       Height = 10
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 3
-      ExplicitTop = 704
+      ExplicitTop = 676
     end
     object pgcPrincipal: TPageControl
       Left = 10
       Top = 10
-      Width = 904
-      Height = 684
+      Width = 902
+      Height = 657
       ActivePage = tbsMenu
       Align = alClient
       TabOrder = 4
-      ExplicitHeight = 694
+      ExplicitHeight = 666
       object tbsMenu: TTabSheet
         Caption = 'Menu'
         object scbIcones: TScrollBox
           Left = 0
           Top = 0
-          Width = 896
-          Height = 654
+          Width = 894
+          Height = 627
           Align = alClient
           BevelInner = bvNone
           Ctl3D = False
           ParentCtl3D = False
           TabOrder = 0
-          ExplicitHeight = 664
+          ExplicitHeight = 636
         end
       end
     end
@@ -123,16 +122,16 @@ object FrmPrincipal: TFrmPrincipal
   object pnlPrincipalTop: TPanel
     Left = 0
     Top = 0
-    Width = 1109
-    Height = 62
+    Width = 1107
+    Height = 81
     Align = alTop
     BevelOuter = bvNone
-    Color = 9502720
+    Color = 4533029
     ParentBackground = False
     TabOrder = 2
     DesignSize = (
-      1109
-      62)
+      1107
+      81)
     object Image1: TImage
       Left = 8
       Top = 7
@@ -210,7 +209,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentFont = False
     end
     object btnFechar: TJvImgBtn
-      Left = 999
+      Left = 997
       Top = 6
       Width = 100
       Height = 36
@@ -222,14 +221,27 @@ object FrmPrincipal: TFrmPrincipal
     end
     object Panel1: TPanel
       Left = 0
-      Top = 54
-      Width = 1109
+      Top = 50
+      Width = 1107
       Height = 8
       Align = alBottom
       Color = 15457754
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 57
+      ExplicitTop = 62
+    end
+    object edtLocalizaMenu: TSearchBox
+      Left = 0
+      Top = 58
+      Width = 1107
+      Height = 23
+      Align = alBottom
+      TabOrder = 2
+      TextHint = 'Digite o que voc'#234' deseja fazer'
+      OnInvokeSearch = edtLocalizaMenuInvokeSearch
+      ExplicitLeft = 192
+      ExplicitTop = 64
+      ExplicitWidth = 121
     end
   end
   object imgButtons: TImageList
