@@ -34,3 +34,5 @@ INSERT INTO Menu(titulo, nomeImagem, nomeFormulario, processo) values('Cadastro 
 INSERT INTO Menu(titulo, nomeImagem, nomeFormulario, processo) values('Cadastro de Cartão', 'CartaoCredito.png', 'TFrmBancoListagem', 'FIN');
 INSERT INTO Menu(titulo, nomeImagem, nomeFormulario, processo) values('Configurações', 'Configuracao.png', 'TFrmBancoListagem', 'CNF');
 
+UPDATE Menu SET nomeFormulario = 'TFrmCartaoListagem' WHERE menuId = 2;
+

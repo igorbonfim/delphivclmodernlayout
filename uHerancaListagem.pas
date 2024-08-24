@@ -226,7 +226,7 @@ begin
     aBookMark := aQry.Bookmark;
     aQry.Refresh;
   finally
-    aQry.GotoBookmark(aBookMark);
+    //aQry.GotoBookmark(aBookMark);
     aQry.EnableControls;
     aQry.FreeBookmark(aBookMark);
   end;
