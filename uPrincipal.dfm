@@ -121,8 +121,6 @@ object FrmPrincipal: TFrmPrincipal
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = 185
-    ExplicitWidth = 938
     object pnlPrincipalCenterLeft: TPanel
       Left = 0
       Top = 10
@@ -140,7 +138,6 @@ object FrmPrincipal: TFrmPrincipal
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 928
     end
     object pnlPrincipalCenterTop: TPanel
       Left = 0
@@ -150,7 +147,6 @@ object FrmPrincipal: TFrmPrincipal
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitWidth = 938
     end
     object pnlPrincipalCenterBottom: TPanel
       Left = 0
@@ -160,7 +156,6 @@ object FrmPrincipal: TFrmPrincipal
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 3
-      ExplicitWidth = 938
     end
     object pgcPrincipal: TPageControl
       Left = 10
@@ -182,7 +177,6 @@ object FrmPrincipal: TFrmPrincipal
           Ctl3D = False
           ParentCtl3D = False
           TabOrder = 0
-          ExplicitWidth = 910
         end
         object pnlPesquisa: TPanel
           Left = 0
@@ -192,7 +186,6 @@ object FrmPrincipal: TFrmPrincipal
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 1
-          ExplicitWidth = 910
           object edtLocalizaMenu: TSearchBox
             Left = 0
             Top = 0
@@ -202,7 +195,6 @@ object FrmPrincipal: TFrmPrincipal
             TabOrder = 0
             TextHint = 'Digite o que voc'#234' deseja fazer'
             OnInvokeSearch = edtLocalizaMenuInvokeSearch
-            ExplicitWidth = 910
           end
         end
       end

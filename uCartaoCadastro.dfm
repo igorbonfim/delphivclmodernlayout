@@ -121,27 +121,23 @@ inherited FrmCartaoCadastro: TFrmCartaoCadastro
       'WHERE'
       
         '  ((Cartao.cartaoId IS NULL AND :OLD_cartaoId IS NULL) OR (Carta' +
-        'o.cartaoId = :OLD_cartaoId))')
+        'o.cartaoId = :OLD_cartaoId)) AND'
+      '  Cartao.descricaoCartao = :OLD_descricaoCartao')
     InsertSQL.Strings = (
       'INSERT INTO Cartao'
-      '  (cartaoId, descricaoCartao)'
+      '  (descricaoCartao)'
       'VALUES'
-      '  (:cartaoId, :descricaoCartao)')
+      '  (:descricaoCartao)')
     ModifySQL.Strings = (
       'UPDATE Cartao SET'
-      '  cartaoId = :cartaoId,'
       '  descricaoCartao = :descricaoCartao'
       'WHERE'
       
         '  ((Cartao.cartaoId IS NULL AND :OLD_cartaoId IS NULL) OR (Carta' +
-        'o.cartaoId = :OLD_cartaoId))')
+        'o.cartaoId = :OLD_cartaoId)) AND'
+      '  Cartao.descricaoCartao = :OLD_descricaoCartao')
     Left = 289
     ParamData = <
-      item
-        DataType = ftUnknown
-        Name = 'cartaoId'
-        ParamType = ptUnknown
-      end
       item
         DataType = ftUnknown
         Name = 'descricaoCartao'
@@ -150,6 +146,11 @@ inherited FrmCartaoCadastro: TFrmCartaoCadastro
       item
         DataType = ftUnknown
         Name = 'OLD_cartaoId'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_descricaoCartao'
         ParamType = ptUnknown
       end>
   end
