@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uHerancaListagem, Data.DB,
   ZAbstractRODataset, ZAbstractDataset, ZDataset, System.ImageList, Vcl.ImgList,
   Vcl.Grids, Vcl.DBGrids, Vcl.DBCtrls, Vcl.StdCtrls, JvExStdCtrls, JvButton,
-  JvCtrls, Vcl.Mask, Vcl.Imaging.pngimage, Vcl.ExtCtrls, uEnum, uCartaoCadastro;
+  JvCtrls, Vcl.Mask, Vcl.Imaging.pngimage, Vcl.ExtCtrls, uEnum, uCartaoCadastro,
+  uDtmConexao;
 
 type
   TfrmCartaoListagem = class(TFrmHerancaListagem)

@@ -7,22 +7,22 @@ inherited FrmCartaoCadastro: TFrmCartaoCadastro
   TextHeight = 15
   inherited pnlHeader: TPanel
     Width = 515
-    ExplicitWidth = 614
+    ExplicitWidth = 515
     inherited imgBtnClose: TImage
       Left = 492
       ExplicitLeft = 591
     end
     inherited pnlHeaderLineTop: TPanel
       Width = 515
-      ExplicitWidth = 614
+      ExplicitWidth = 515
     end
     inherited pnlHeaderLineRight: TPanel
       Left = 514
-      ExplicitLeft = 613
+      ExplicitLeft = 514
     end
     inherited pnlHeaderLineGray: TPanel
       Width = 496
-      ExplicitWidth = 595
+      ExplicitWidth = 496
     end
   end
   inherited pnlFormLineLeft: TPanel
@@ -32,19 +32,19 @@ inherited FrmCartaoCadastro: TFrmCartaoCadastro
   inherited pnlFormLineRight: TPanel
     Left = 514
     Height = 170
-    ExplicitLeft = 613
+    ExplicitLeft = 514
     ExplicitHeight = 170
   end
   inherited pnlFormLineBottom: TPanel
     Top = 200
     Width = 515
     ExplicitTop = 200
-    ExplicitWidth = 614
+    ExplicitWidth = 515
   end
   inherited pnlPrincipal: TPanel
     Width = 513
     Height = 170
-    ExplicitWidth = 612
+    ExplicitWidth = 513
     ExplicitHeight = 170
     object Label1: TLabel [0]
       Left = 16
@@ -66,7 +66,7 @@ inherited FrmCartaoCadastro: TFrmCartaoCadastro
       Top = 121
       Width = 513
       ExplicitTop = 121
-      ExplicitWidth = 612
+      ExplicitWidth = 513
     end
     object DBEdit1: TDBEdit
       Tag = 81
@@ -81,7 +81,7 @@ inherited FrmCartaoCadastro: TFrmCartaoCadastro
     end
     object DBEdit2: TDBEdit
       Left = 16
-      Top = 80
+      Top = 82
       Width = 454
       Height = 23
       DataField = 'descricaoCartao'
@@ -91,9 +91,7 @@ inherited FrmCartaoCadastro: TFrmCartaoCadastro
   end
   inherited QryCadastro: TZQuery
     SQL.Strings = (
-      
-        'SELECT cartaoId, descricaoCartao FROM Cartao WHERE cartaoId = :c' +
-        'artaoId')
+      'SELECT * FROM Cartao WHERE cartaoId = :cartaoId')
     Params = <
       item
         DataType = ftUnknown
@@ -118,7 +116,42 @@ inherited FrmCartaoCadastro: TFrmCartaoCadastro
     end
   end
   inherited updCadastro: TZUpdateSQL
+    DeleteSQL.Strings = (
+      'DELETE FROM Cartao'
+      'WHERE'
+      
+        '  ((Cartao.cartaoId IS NULL AND :OLD_cartaoId IS NULL) OR (Carta' +
+        'o.cartaoId = :OLD_cartaoId))')
+    InsertSQL.Strings = (
+      'INSERT INTO Cartao'
+      '  (cartaoId, descricaoCartao)'
+      'VALUES'
+      '  (:cartaoId, :descricaoCartao)')
+    ModifySQL.Strings = (
+      'UPDATE Cartao SET'
+      '  cartaoId = :cartaoId,'
+      '  descricaoCartao = :descricaoCartao'
+      'WHERE'
+      
+        '  ((Cartao.cartaoId IS NULL AND :OLD_cartaoId IS NULL) OR (Carta' +
+        'o.cartaoId = :OLD_cartaoId))')
     Left = 289
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'cartaoId'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'descricaoCartao'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_cartaoId'
+        ParamType = ptUnknown
+      end>
   end
   inherited dtsCadastro: TDataSource
     Left = 369

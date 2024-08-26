@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uHerancaCadastro, Data.DB, ZSqlUpdate,
   ZAbstractRODataset, ZAbstractDataset, ZDataset, System.ImageList, Vcl.ImgList,
   Vcl.StdCtrls, JvExStdCtrls, JvButton, JvCtrls, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls;
+  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, uDtmConexao;
 
 type
   TFrmCartaoCadastro = class(TFrmHerancaCadastro)

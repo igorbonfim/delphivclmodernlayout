@@ -7,13 +7,15 @@ object dtmConexao: TdtmConexao
     AutoEncodeStrings = True
     Catalog = ''
     Properties.Strings = (
-      'controls_cp=CP_UTF16')
+      'controls_cp=CP_UTF16'
+      'AutoEncodeStrings=True')
     TransactIsolationLevel = tiReadCommitted
+    Connected = True
     HostName = '.'
     Port = 0
     Database = 'dbLayoutModerno'
     User = 'sa'
-    Password = ''
+    Password = '@ijbp12345'
     Protocol = 'mssql'
     LibraryLocation = 
       'C:\Projetos\Sistema Delphi com Layout Moderno - Udemy\ntwdblib.d' +

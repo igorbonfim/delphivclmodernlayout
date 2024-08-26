@@ -19,7 +19,7 @@ CREATE TABLE Menu (
 );
 
 CREATE TABLE Cartao (
-	cartaoId int identity NOT NULL,
+	cartaoId int identity(1,1) NOT NULL,
 	descricaoCartao varchar(30) NOT NULL,
 	primary key(cartaoId)
 )
