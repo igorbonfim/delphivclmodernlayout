@@ -15,14 +15,24 @@ CREATE TABLE Menu (
 	nomeFormulario varchar(50) NOT NULL,
 	processo CHAR(3) NOT NULL
 
-	primary key(menuId)
+	PRIMARY KEY(menuId)
 );
 
 CREATE TABLE Cartao (
 	cartaoId int identity(1,1) NOT NULL,
 	descricaoCartao varchar(30) NOT NULL,
-	primary key(cartaoId)
+
+	PRIMARY KEY(cartaoId)
 )
+
+CREATE TABLE Usuario
+(
+	usuarioId INT IDENTITY NOT NULL,
+	nomeUsuario VARCHAR(30) NOT NULL UNIQUE,
+	senha VARCHAR(30) NOT NULL,
+
+	PRIMARY KEY (usuarioId)
+);
 
 -- Bancos
 INSERT INTO Banco (CodBanco, DescBanco, WebSite) VALUES('001', 'Banco do Brasil S.A', 'www.bb.com.br');
@@ -33,6 +43,8 @@ INSERT INTO Banco (CodBanco, DescBanco, WebSite) VALUES('104', 'Caixa Econômica 
 INSERT INTO Menu(titulo, nomeImagem, nomeFormulario, processo) values('Cadastro de Banco', 'BancoFebraban.png', 'TFrmBancoListagem', 'FIN');
 INSERT INTO Menu(titulo, nomeImagem, nomeFormulario, processo) values('Cadastro de Cartão', 'CartaoCredito.png', 'TFrmBancoListagem', 'FIN');
 INSERT INTO Menu(titulo, nomeImagem, nomeFormulario, processo) values('Configurações', 'Configuracao.png', 'TFrmBancoListagem', 'CNF');
+
+INSERT INTO USUARIO(NOMEUSUARIO, SENHA) VALUES('TESTE', 'MUDAR@123');
 
 UPDATE Menu SET nomeFormulario = 'TFrmCartaoListagem' WHERE menuId = 2;
 
