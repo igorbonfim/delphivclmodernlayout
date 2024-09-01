@@ -15,7 +15,7 @@ object dtmConexao: TdtmConexao
     Port = 0
     Database = 'dbLayoutModerno'
     User = 'sa'
-    Password = '@ijbp12345'
+    Password = ''
     Protocol = 'mssql'
     LibraryLocation = 
       'C:\Projetos\Sistema Delphi com Layout Moderno - Udemy\ntwdblib.d' +

@@ -254,14 +254,12 @@ end;
 
 procedure TFrmPrincipal.btnConfiguracoesMouseEnter(Sender: TObject);
 begin
-  (Sender as TJvImgBtn).ImageIndex := 4;
-  (Sender as TJvImgBtn).Cursor := crHandPoint;
+  ButtonMouseEnter(Sender, 4);
 end;
 
 procedure TFrmPrincipal.btnConfiguracoesMouseLeave(Sender: TObject);
 begin
-  (Sender as TJvImgBtn).ImageIndex := 5;
-  (Sender as TJvImgBtn).Cursor := crDefault;
+  ButtonMouseLeave(Sender, 5);
 end;
 
 procedure TFrmPrincipal.btnFinanceiroClick(Sender: TObject);
@@ -271,14 +269,12 @@ end;
 
 procedure TFrmPrincipal.btnFinanceiroMouseEnter(Sender: TObject);
 begin
-  (Sender as TJvImgBtn).ImageIndex := 0;
-  (Sender as TJvImgBtn).Cursor := crHandPoint;
+  ButtonMouseEnter(Sender, 0);
 end;
 
 procedure TFrmPrincipal.btnFinanceiroMouseLeave(Sender: TObject);
 begin
-  (Sender as TJvImgBtn).ImageIndex := 1;
-  (Sender as TJvImgBtn).Cursor := crDefault;
+  ButtonMouseLeave(Sender, 1);
 end;
 
 procedure TFrmPrincipal.btnVendasClick(Sender: TObject);
@@ -288,14 +284,12 @@ end;
 
 procedure TFrmPrincipal.btnVendasMouseEnter(Sender: TObject);
 begin
-  (Sender as TJvImgBtn).ImageIndex := 2;
-  (Sender as TJvImgBtn).Cursor := crHandPoint;
+  ButtonMouseEnter(Sender, 2);
 end;
 
 procedure TFrmPrincipal.btnVendasMouseLeave(Sender: TObject);
 begin
-  (Sender as TJvImgBtn).ImageIndex := 3;
-  (Sender as TJvImgBtn).Cursor := crDefault;
+  ButtonMouseLeave(Sender, 3);
 end;
 
 procedure TFrmPrincipal.Button1Click(Sender: TObject);
@@ -333,6 +327,8 @@ begin
 
   if Assigned(frmSplash) then
     frmSplash.Free;
+
+  Self.FormStyle := fsStayOnTop;
 end;
 
 procedure TFrmPrincipal.imgBtnCloseClick(Sender: TObject);

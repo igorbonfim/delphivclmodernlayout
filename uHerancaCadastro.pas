@@ -4,13 +4,14 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uHerancaBase, System.ImageList,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList,
   Vcl.ImgList, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls, JvExStdCtrls,
   JvButton, JvCtrls, Data.DB, ZAbstractRODataset, ZAbstractDataset, ZDataset,
   ZSqlUpdate, uEnum, Vcl.Mask, Vcl.DBCtrls, JvCombobox, JvDBCombobox,
   JvDBControls, Vcl.ComCtrls, JvExComCtrls, JvDateTimePicker,
   JvDBDateTimePicker, JvExMask, JvToolEdit, JvEdit, JvValidateEdit, Vcl.Grids,
-  Vcl.DBGrids, ZAbstractConnection, ZConnection, uDtmConexao;
+  Vcl.DBGrids, ZAbstractConnection, ZConnection, uDtmConexao,
+  uHerancaBase;
 
 type
   TFrmHerancaCadastro = class(TFrmHerancaBase)
@@ -53,6 +54,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses uPrincipal, uFuncoes;
 
 procedure TFrmHerancaCadastro.btnApagarClick(Sender: TObject);
 begin
