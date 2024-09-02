@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uSplash, Vcl.StdCtrls, uHerancaBase,
   Vcl.Buttons, uHerancaListagem, Vcl.ExtCtrls, Vcl.ComCtrls, uDtmConexao,
   uBancoListagem, Vcl.Imaging.pngimage, System.ImageList, Vcl.ImgList,
-  JvExStdCtrls, JvButton, JvCtrls, Vcl.WinXCtrls;
+  JvExStdCtrls, JvButton, JvCtrls, Vcl.WinXCtrls, uLogin;
 
 type
   TFrmPrincipal = class(TForm)
@@ -320,6 +320,10 @@ begin
   frmSplash := TfrmSplash.Create(Self);
   frmSplash.Show;
   frmSplash.Refresh;
+
+  frmLogin := TfrmLogin.Create(Self);
+  frmLogin.ShowModal;
+  frmLogin.Release;
 
   FiltrarMenuProcesso('FIN');
 

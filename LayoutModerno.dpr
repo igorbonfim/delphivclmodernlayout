@@ -13,7 +13,8 @@ uses
   uEnum in 'uEnum.pas',
   uBancoCadastro in 'uBancoCadastro.pas' {FrmBancoCadastro},
   uCartaoListagem in 'uCartaoListagem.pas' {frmCartaoListagem},
-  uCartaoCadastro in 'uCartaoCadastro.pas' {FrmCartaoCadastro};
+  uCartaoCadastro in 'uCartaoCadastro.pas' {FrmCartaoCadastro},
+  uLogin in 'uLogin.pas' {frmLogin};
 
 {$R *.res}
 
